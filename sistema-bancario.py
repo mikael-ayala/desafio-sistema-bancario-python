@@ -28,10 +28,13 @@ while True:
 
     elif opcao == 's':
         valor = float(input('Digite o valor que deseja sacar: '))
-        if valor > 0 and valor <= saldo:
+        if valor > 0 and valor <= saldo and numero_saques < LIMITE_SAQUES:
             saldo -= valor
             extrato += f'Saldo | R$ {valor:.2f}\n'
+            numero_saques += 1
             print(f'Saque de R$ {valor:.2f} foi efetuado com sucesso, saldo total de R$ {saldo:.2f}.')
+        elif numero_saques >= LIMITE_SAQUES:
+            print('Saque negado! Limite de saques diários excedido.')
         elif valor > saldo:
             print('Saque negado! Valor de saque excede o valor de saldo disponível.')
         else:
