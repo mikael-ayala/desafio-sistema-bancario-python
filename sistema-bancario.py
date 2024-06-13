@@ -30,7 +30,7 @@ while True:
         valor = float(input('Digite o valor que deseja sacar: '))
         if valor > 0 and valor <= saldo and numero_saques < LIMITE_SAQUES:
             saldo -= valor
-            extrato += f'Saldo | R$ {valor:.2f}\n'
+            extrato += f'Saque    | R$ {valor:.2f}\n'
             numero_saques += 1
             print(f'Saque de R$ {valor:.2f} foi efetuado com sucesso, saldo total de R$ {saldo:.2f}.')
         elif numero_saques >= LIMITE_SAQUES:
@@ -41,7 +41,9 @@ while True:
             print('Saque negado! Valor de saque deve ser um número positivo.')
         
     elif opcao == 'e':
-        print('Extrato')
+        print('====== Extrato =======')
+        print(extrato)
+        print(f'Saldo    | R$ {saldo:.2f}')
 
     elif opcao == 'q':
         break
