@@ -24,10 +24,18 @@ while True:
             extrato += f'Depósito | R$ {valor:.2f}\n'
             print(f'Deposito de R$ {valor:.2f} foi efetuado com sucesso, saldo total de R$ {saldo:.2f}.')
         else:
-            print('O valor depositado precisa ser maior do que zero')
+            print('Depósito negado! O valor depositado precisa ser maior do que zero.')
 
     elif opcao == 's':
-        print('Saque')
+        valor = float(input('Digite o valor que deseja sacar: '))
+        if valor > 0 and valor <= saldo:
+            saldo -= valor
+            extrato += f'Saldo | R$ {valor:.2f}\n'
+            print(f'Saque de R$ {valor:.2f} foi efetuado com sucesso, saldo total de R$ {saldo:.2f}.')
+        elif valor > saldo:
+            print('Saque negado! Valor de saque excede o valor de saldo disponível.')
+        else:
+            print('Saque negado! Valor de saque deve ser um número positivo.')
         
     elif opcao == 'e':
         print('Extrato')
